@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head runat="server">
+   <title>Mobile first sample page</title>
+   <meta name="viewport" content="width=device-width,
+      initial-scale=1" />
+   <link href="css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+<style>
+.extraClass {
+  font-size: 90px;
+  height: 110px;
+  width: 115px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.icon-bar {
+margin-top: 5px;
+}
+#navbarContent {
+height: 170px;
+width: 350px;
+padding-left: 20px;
+margin-top: 15px;
+
+}
+
+.main-container {
+  background-color: blue;
+  padding-top: 5px;
+}
+.icon-detail {
+  width: 100%;
+  font-size: 22px;
+  height: 25px;
+  background-color: white;
+
+  padding-left: 25px;
+}
+</style>
+   <div id="divContainer" class="main-container">
+            <div id="navbarContent">
+                 <button type="button"
+                  <span class="icon-bar"><i class="fa fa-utensils extraClass"></i></span>
+                </button>
+                <button type="button"
+                     <span class="icon-bar"><i class="fa fa-cocktail extraClass"></i></span>
+                   </button>
+                 </div>
+
+                <div id="divContainer" class="icon-detail">  &nbsp
+                <a>Resturants</a> &nbsp &nbsp&nbsp &nbsp <a>Products</a>
+                </div>
+                <div id="divContainer" class="main-container">
+                         <div id="navbarContent">
+                    <button type="button"
+                    <span class="icon-bar"><i class="fa fa-film extraClass"></i></span>
+                  </button>
+                    <button type="button"
+                    <span class="icon-bar"><i class="fa fa-shopping-cart extraClass"></i></span>
+                    </button>
+</div>
+<div id="divContainer" class="icon-detail">
+<a>Entertainment</a>  &nbsp &nbsp <a>Products</a>
+</div>
+<div id="divContainer" class="main-container">
+         <div id="navbarContent">
+
+                    <button type="button"
+                    <span class="icon-bar"><i class="fa fa-balance-scale extraClass"></i></span>
+                 </button>
+                 <button type="button"
+                   <span class="icon-bar"><i class="fa fa-church extraClass"></i></span>
+                 </button>
+            </div>
+            <div id="divContainer" class="icon-detail"> &nbsp  &nbsp
+            <a>Services</a> &nbsp &nbsp &nbsp &nbsp &nbsp <a>Religious</a>
+            </div>
+
+         </div>
+       </div>
+ </div>
+    </body>
+   <script
+   			  src="https://code.jquery.com/jquery-2.1.1.min.js"
+   			  integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="
+   			  crossorigin="anonymous">
+  </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
