@@ -7,7 +7,7 @@
    <title>Mobile first sample page</title>
    <meta name="viewport" content="width=device-width,
       initial-scale=1" />
-   <link href="css/bootstrap.min.css" rel="stylesheet" />
+   <link href="{%static 'bootstrap.min.css' %}" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="{% static 'styles.css' %}" rel="stylesheet" />
 </head>
@@ -32,7 +32,7 @@ margin-top: 15px;
 }
 
 .main-container {
-  background-color: blue;
+  background-color: ;
   padding-top: 5px;
 }
 .icon-detail {
@@ -40,22 +40,23 @@ margin-top: 15px;
   font-size: 22px;
   height: 25px;
   background-color: white;
-
   padding-left: 25px;
 }
 </style>
    <div id="divContainer" class="main-container">
             <div id="navbarContent">
-                 <button type="button"
-                  <span class="icon-bar"><i class="fa fa-utensils extraClass"></i></span>
-                </button>
+              <button type="button">
+              <a href= "{% url 'company:nightlife' %}"> <span class="icon-bar"><i class="fa fa-utensils extraClass"></i></span>
+              </a>
+            </button>
                 <button type="button"
-                     <span class="icon-bar"><i class="fa fa-cocktail extraClass"></i></span>
+                     <span class="icon-bar"><i  class="fa fa-cocktail extraClass"></i></span>
+                     <a href="{% url 'company:nightlife' %}">
                    </button>
                  </div>
 
                 <div id="divContainer" class="icon-detail">  &nbsp
-                <a>Resturants</a> &nbsp &nbsp&nbsp &nbsp <a>Products</a>
+                <a href= "{% url 'company:nightlife' %}">Resturants</a> &nbsp &nbsp&nbsp &nbsp</a><a href="{% url 'company:nightlife' %}">Night Life</a>
                 </div>
                 <div id="divContainer" class="main-container">
                          <div id="navbarContent">
@@ -66,9 +67,8 @@ margin-top: 15px;
                     <span class="icon-bar"><i class="fa fa-shopping-cart extraClass"></i></span>
                     </button>
 </div>
-<div id="divContainer" class="icon-detail">
-<a>Entertainment</a>  &nbsp &nbsp <a>Products</a>
-</div>
+<div id="divContainer" class="icon-detail">&nbsp &nbsp
+  <a href= "{% url 'company:nightlife' %}">Leisure</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</a><a href="{% url 'company:products' %}">Products</a></div>
 <div id="divContainer" class="main-container">
          <div id="navbarContent">
 
@@ -80,8 +80,7 @@ margin-top: 15px;
                  </button>
             </div>
             <div id="divContainer" class="icon-detail"> &nbsp  &nbsp
-            <a>Services</a> &nbsp &nbsp &nbsp &nbsp &nbsp <a>Religious</a>
-            </div>
+  <a href= "{% url 'company:nightlife' %}">Services</a> &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp</a><a href="{% url 'company:products' %}">Religious</a>            </div>
 
          </div>
        </div>

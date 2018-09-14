@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head runat="server">
+   <title>Mobile first sample page</title>
+   <meta name="viewport" content="width=device-width,
+      initial-scale=1" />
+   <link href="bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+</head>
+
+<style>
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 375px;
+  grid-template-rows: 200px 75px 75px 75px 75px 50px;
+  grid-gap: 10px 1px;
+  grid-template-areas: "." "contact-info" "rating" "distance" "open-hours" "bback-";
+
+}
+
+.contact-info { grid-area: contact-info;
+height: 200px;
+width:375px;
+border: solid;
+background-color: blue;
+border-width: 1px;
+border-color: black;
+}
+
+#rating { grid-area: rating;
+  width: 355px;
+  height: 80px;
+background-color: white;
+border-color: black;
+border: solid;
+border-width: 5px;}
+
+.rating-data {
+  text-align: center;
+  font-size: 18px;
+}
+.rating-average {
+  padding-left: 35px;
+  font-size: 20px;
+}
+.distance { grid-area: distance;
+background-color: green;
+width: 375px;
+height: 75px;}
+
+.back- { grid-area: back-;
+back-ground: yellow}
+
+.open-hours { grid-area: open-hours;
+background-color: green }
+.extraClasses {
+  font-size: 12px;
+}
+.extraClass {
+  font-size: 75px;
+  height: 110px;
+  width: 115px;
+  padding-top:15px;
+
+}
+.icon-bar {
+margin-top: 5px;
+}
+#navbarContent {
+height: 170px;
+width: 350px;
+padding-left: 10px;
+
+
+}
+
+.main-container {
+  background-color: ;
+  padding-top: 5px;
+}
+.icon-detail {
+  width: 100%;
+  font-size: 22px;
+  height: 25px;
+  background-color: white;
+  padding-left: 25px;
+  margin-bottom: 25px;
+}
+</style>
+<body>
+<div class="grid-container">
+<div class="image">
+
+
+  <div>
+
+  <div class="contact-info">
+    <img src='https://picsum.photos/375/200?image=0' alt='business picture'>
+
+  </div>
+  <div class="rating" id='rating'>
+    <div class='rating-data'>
+<p>Company Name Here</p>
+    </div>
+    <div class='rating-average'>
+<a>4 ot of 5 Stars</a>
+
+  </div>
+
+  <div id="divContainer" class="main-container">
+           <div id="navbarContent">
+      <button type="button"
+      <span class="icon-bar"><i class="fa fa-address-card extraClass"></i></span>
+    </button>
+      <button type="button"
+      <span class="icon-bar"><i class="fa fa-map-marker-alt extraClass"></i></span>
+      </button>
+</div>
+
+               <div id="divContainer" class="icon-detail">
+               <a href= "{% url 'company:contactinfo' %}">Contact Info</a> &nbsp &nbsp&nbsp &nbsp</a><a href="{% url 'company:directions' %}">Directions</a>
+               </div>
+               <div id="divContainer" class="main-container">
+                        <div id="navbarContent">
+                   <button type="button"
+                   <span class="icon-bar"><i class="fa fa-comments extraClass"></i></span>
+                 </button>
+                   <button type="button"
+                   <span class="icon-bar"><i class="fa-hand-holding-usd extraClass"></i></span>
+                   </button>
+ </div>
+ <div id="divContainer" class="icon-detail">&nbsp
+ <a href= "{% url 'company:reviews' %}">Reviews</a> &nbsp &nbsp &nbsp &nbsp &nbsp</a><a href="{% url 'company:promotions' %}">Promotions</a></div>
+      </div>
+ </div>
+</body>
+<script>
+     src="https://code.jquery.com/jquery-2.1.1.min.js"
+     integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="
+     crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
