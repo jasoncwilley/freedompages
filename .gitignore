@@ -3,3 +3,6 @@ venv
 staticfiles
 .env
 *.sqlite3
+phonebook/settings.py
+company/templates/map.html
+

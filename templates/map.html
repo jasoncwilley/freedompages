@@ -23,26 +23,57 @@
 
 
 
-.map { grid-area: map;
-background-color: grey;}
+.map { grid-area: map;}
 
 .info { grid-area: info;
-background-color: green;}
+  margin-left: 10px;
+  margin-right: 10px;}
 
 .button {
   width: 85px;
   height: 40px;
   margin-right: 145px;
   margin-left: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .backbutton {
     width: 85px;
     margin-top: 10px;
     height: 40px;
-   margin-bottom: 15px;
+   margin-bottom: 10px;
   }
-
+  #map {
+       height: 100%;
+       margin-left: 20px;
+     }
+     /* Optional: Makes the sample page fill the window. */
+     html, body {
+       height: 100%;
+       margin: 0;
+     }
+.openorclosed {
+  width: 100%;
+  height: 60px;
+  padding-left: 10px;
+  margin-left: 10px;
+  text-align: left;
+  font-size: 16px;
+  padding-top: 10px;
+  border: solid;
+  border-width: 1px;
+  border-color: black;
+  margin-bottom: 5px;
+  color: black;
+}
+.directions {
+  background-color: lightgray;
+  width: 100%;
+  height: 250px;
+  margin-left: 10px;
+  font-size: 16px;
+  color: black;
+}
 </style>
 <body>
   <nav class='buttons'>
@@ -55,34 +86,35 @@ background-color: green;}
   <div class="nav">
   </div>
   <div class="map">
+    <div id="map"></div>
   </div>
-  <div class="info">
-  </div>
+<div class='info'>
+<div class='openorclosed'>
+  <a>Company Name is Open until ???? Today</a>
+  <a>Current Driving Time is XX Minutes</a>
 </div>
-</body>
-<script type="text/javascript">
-var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4.8,
-      center: new google.maps.LatLng(35.481918, -97.508469),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    var infowindow = new google.maps.InfoWindow();
-    var marker, i;
-    for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-        html: locations[i][0],
-        id: locations[i][3],
-      });
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }
-  </script>
+<div class='directions'>
+<a>Insert Instructions Here</a>
+</div>
+</div>
+
+      <!--The div element for the map -->
+
+      <script>
+  // Initialize and add the map
+  function initMap() {
+    // The location of Uluru
+    var uluru = {lat: 38.047989, lng: -84.501640};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+      </script>
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmdsoXBBFH8yerapaH9C-lfqfhdkvWWFU&callback=initMap">
+      </script>
  <script
         src="https://code.jquery.com/jquery-2.1.1.min.js"
         integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="

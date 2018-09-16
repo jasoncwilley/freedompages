@@ -16,6 +16,7 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+GOOGLE_MAPS_API_KEY ='AIzaSyBIoE68xjBh2y1kb-buD_8AflUk0viH3wo'
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'company',
+    'django_google_maps',
 ]
 
 MIDDLEWARE = [
