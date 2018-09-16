@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head runat="server">
+   <title>Mobile first sample page</title>
+   <meta name="viewport" content="width=device-width,
+      initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{% static 'company/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+<style>
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 350px;
+  grid-template-rows: 250px 200px;
+  grid-gap: 1px;
+  grid-template-areas: "map" "info";
+}
+
+
+
+.map { grid-area: map;
+background-color: grey;}
+
+.info { grid-area: info;
+background-color: green;}
+
+.button {
+  width: 85px;
+  height: 40px;
+  margin-right: 145px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+.backbutton {
+    width: 85px;
+    margin-top: 10px;
+    height: 40px;
+   margin-bottom: 15px;
+  }
+
+</style>
+<body>
+  <nav class='buttons'>
+    <a  class='btn btn-primary button' type='submit' href="{% url 'company:companyinfo' %}">Back
+    </a>
+    <a class='btn-primary btn backbutton'>Search
+    </a>
+  </nav>
+<div class="grid-container">
+  <div class="nav">
+  </div>
+  <div class="map">
+  </div>
+  <div class="info">
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4.8,
+      center: new google.maps.LatLng(35.481918, -97.508469),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        html: locations[i][0],
+        id: locations[i][3],
+      });
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+ <script
+        src="https://code.jquery.com/jquery-2.1.1.min.js"
+        integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="
+        crossorigin="anonymous">
+</script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

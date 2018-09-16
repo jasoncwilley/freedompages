@@ -7,9 +7,9 @@
    <title>Mobile first sample page</title>
    <meta name="viewport" content="width=device-width,
       initial-scale=1" />
-   <link href="bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'company/styles.css' %}" rel="stylesheet" />
 </head>
 
 <style>
@@ -118,12 +118,12 @@ padding-left: 10px;
       <span class="icon-bar"><i class="fa fa-address-card extraClass"></i></span>
     </button>
       <button type="button"
-      <span class="icon-bar"><i class="fa fa-map-marker-alt extraClass"></i></span>
+      <span class="icon-bar"><i type='action' href="{% url 'company:products' %}"class="fa fa-map-marker-alt extraClass"></i></span>
       </button>
 </div>
 
                <div id="divContainer" class="icon-detail">
-               <a href= "{% url 'company:contactinfo' %}">Contact Info</a> &nbsp &nbsp&nbsp &nbsp</a><a href="{% url 'company:directions' %}">Directions</a>
+               <a href= "{% url 'company:contactinfo' %}">Contact Info</a> &nbsp &nbsp&nbsp &nbsp <a href="{% url 'company:map' %}">Directions</a>
                </div>
                <div id="divContainer" class="main-container">
                         <div id="navbarContent">

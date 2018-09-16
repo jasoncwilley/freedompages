@@ -7,6 +7,28 @@ from django.urls import reverse
 def index(request):
     return render(request, 'index.html')
 
+def map(request):
+    return render(request, 'map.html')
+
+def userloc(request):
+    ip = get_client_ip(request)
+    ip = '74.136.205.106'
+    print(ip)
+    reader = geoip2.database.Reader('/home/minty/Documents/Chatango-front-end/GeoLite2-City.mmdb')
+    response = reader.city(str(ip))
+    city = response.city.name
+    latitude = response.location.latitude
+    longitude = response.location.longitude
+    return HttpResponse("Your IP address is " + str(ip) + "\n" + "Your city is " + str(city) + "/n" + "Your longitude is " + str(longitude) +  "/n" + "Your latitude is" + str(latitude))
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 def contactinfo(request):
     return render(request, 'contactinfo.html')
 
