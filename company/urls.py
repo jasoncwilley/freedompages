@@ -17,6 +17,6 @@ urlpatterns = [
     path('directions/', views.directions, name='directions'),
     path('reviews/', views.reviews, name='reviews'),
     path('promotions/', views.promotions, name='promotions'),
-    path('map/', views.map, name='map')
-
+    path('map/', views.map, name='map'),
+    path('d/', views.ReviewCreate.as_view(), name='review')
 ]

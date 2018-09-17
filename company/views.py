@@ -1,7 +1,33 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+import datetime
+from company.forms import ReviewForm
+from company.models import CompanyName, Review
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
+class ReviewCreate(CreateView):
+    model = Review
+    fields = '__all__'
+    def get_success_url(self):
+        return HttpResponseRedirect('/index/')
+'''
+def submit_review(request):
+    review_form = ReviewForm
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            Review.save()
+            return HttpResponseRedirect(reverse('not a registered company'))
+    else:
+        review_form = ReviewForm()
+    context = {
+    'review_form': review_form,
+    }
+
+    return render(request, 'review.html', context)
+'''
 
 
 def index(request):

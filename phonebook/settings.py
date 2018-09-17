@@ -16,7 +16,6 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-GOOGLE_MAPS_API_KEY ='AIzaSyBIoE68xjBh2y1kb-buD_8AflUk0viH3wo'
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,23 +26,24 @@ SECRET_KEY = "7m&5e4sdyb!0l9c8i*0wo4hbn_2(oo$&8^s-#ex*w)h=26aq&9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+GOOGLE_API_KEY = 'AIzaSyAmdsoXBBFH8yerapaH9C-lfqfhdkvWWFU'
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
     # Disable Django's own staticfiles handling in favour of WhiteNoise, for
     # greater consistency between gunicorn and `./manage.py runserver`. See:
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'company',
-    'django_google_maps',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
