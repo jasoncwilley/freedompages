@@ -16,16 +16,20 @@
 <style>
 .grid-container {
   display: grid;
+  width: 360px;
   height: 100%;
   grid-template-columns: 80px 280px;
   grid-template-rows: 115px 115px 115px 115px 115px;
   grid-gap: 2px 1px;
   grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
 }
-
 .image { grid-area: image;
-border-width: 2px;
-border-color: green;}
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  height: 100px;
+width: 100px;
+}
 
 
 .image1 { grid-area: image1;
@@ -39,68 +43,40 @@ padding-bottom: 15px;}
 
 
 
-.company1 { grid-area: company1;
-padding-left: 5px;
-padding-bottom: 15px;
-width:280px;
-border-width: 2px;
-border-color: black;
-border-style: solid;
-height: 115px;}
-
-.company2 { grid-area: company2;
-padding-left: 5px;
-
-width:280px;
-border-width: 2px;
-border-color: black;
-border-style: solid;
-height: 115px;}
-
-.company3 { grid-area: company3;
-padding-left: 5px;
-padding-bottom: 15px;
-width:280px;
-border-width: 2px;
-border-color: black;
-border-style: solid;
-height: 115px;}
-
-.company4 { grid-area: company4;
-
-padding-left: 5px;
-padding-bottom: 15px;
-width:280px;
-border-width: 2px;
-border-color: black;
-border-style: solid;
-height: 115px;}
 
 .company { grid-area: company;
+  color: white;
+  padding-right: 10px;
 padding-left: 5px;
 padding-bottom: 15px;
-width:280px;
+width:275px;
+border-left: 0px;
 border-width: 2px;
 border-color: black;
 border-style: solid;
-border-right: 5px;
-height: 115px;
-text-align: center;}
+height: 110px;
+margin-left: 20px;
+height: 102px;
+text-align: center;
+ background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
 
 .companydescription { grid-area: company;
-  font-size: 12px;
+  font-size: 10px;
   text-align: left;
-  padding-left: 5px;}
+  padding-left: 5px;
+}
 
 
   .button {
     width: 85px;
     height: 40px;
-    margin-right: 160px;
-    margin-left: 10px;
+    margin-right: 145px;
+    margin-left: 20px;
     margin-bottom: 15px;
+    color: white;
   }
   .backbutton {
+    color: white;
       width: 85px;
       margin-top: 10px;
       height: 40px;
@@ -115,24 +91,24 @@ text-align: center;}
   <button class='backbutton'>Search
   </button>
 </nav>
-
+{% for x in company %}
      <div class="grid-container">
 
        <div class="image">
-         <img src="https://picsum.photos/85/134/?random" alt="business image">
+         <img src="https://picsum.photos/100/100/?random" alt="business image">
 
        </div>
 
 
        <div class="company">
-         <h4>Comany Name Goes Here</h4>
+         <h4>{{ x.companyname }}</h4>
 
          <div class='companydescription'>
-         <a>This is some sample information about the business.
-           This is some sample information about the business.
-           This is some sample information about the business.</a>
+         <p>{{ x.description }}</p>
 </div>
        </div>
+{% endfor %}
+
   </body>
    <script
    			  src="https://code.jquery.com/jquery-2.1.1.min.js"

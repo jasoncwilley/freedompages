@@ -6,7 +6,7 @@ app_name='company'
 urlpatterns = [
 
     path('', views.index, name='index'),
-    path('resturants/', views.resturants, name='resturants'),
+    path('foodandbev/', views.foodandbev, name='foodandbev'),
     path('nightlife/', views.nightlife, name='nightlife'),
     path('entertainment/', views.entertainment, name='entertainment'),
     path('services/', views.services, name='services'),

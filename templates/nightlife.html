@@ -16,15 +16,19 @@
 <style>
 .grid-container {
   display: grid;
+  width: 360px;
   height: 100%;
   grid-template-columns: 80px 280px;
   grid-template-rows: 115px 115px 115px 115px 115px;
   grid-gap: 2px 1px;
   grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
 }
-
 .image { grid-area: image;
-width: 115px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  height: 100px;
+width: 100px;
 }
 
 
@@ -41,22 +45,26 @@ padding-bottom: 15px;}
 
 
 .company { grid-area: company;
+  color: white;
+  padding-right: 10px;
 padding-left: 5px;
 padding-bottom: 15px;
-width:240px;
+width:275px;
 border-left: 0px;
 border-width: 2px;
-border-color: lightgray;
+border-color: black;
 border-style: solid;
-height: 134px;
-margin-left: 40px;
-text-align: center;}
-
+height: 110px;
+margin-left: 20px;
+height: 102px;
+text-align: center;
+ background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
 
 .companydescription { grid-area: company;
-  font-size: 12px;
+  font-size: 10px;
   text-align: left;
-  padding-left: 5px;}
+  padding-left: 5px;
+}
 
 
   .button {
@@ -83,24 +91,24 @@ text-align: center;}
   <button class='backbutton'>Search
   </button>
 </nav>
-
+{% for x in company %}
      <div class="grid-container">
 
        <div class="image">
-         <img src="https://picsum.photos/122/134/?random" alt="business image">
+         <img src="https://picsum.photos/100/100/?random" alt="business image">
 
        </div>
 
 
        <div class="company">
-         <h4>Comany Name Goes Here</h4>
+         <h4>{{ x.companyname }}</h4>
 
          <div class='companydescription'>
-         <p>This is some sample information about the business.
-           This is some sample information about the business.
-           This is some sample information about the business.</p>
+         <p>{{ x.description }}</p>
 </div>
        </div>
+{% endfor %}
+
   </body>
    <script
    			  src="https://code.jquery.com/jquery-2.1.1.min.js"

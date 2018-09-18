@@ -38,6 +38,7 @@ company_type = models.CharField(
 class CompanyName(models.Model):
     companyname = models.CharField(max_length=50)
     company_type = models.CharField(choices=COMPANY_TYPE_CHOICES, max_length=25)
+    description = models.TextField(max_length=500, null=True, blank=True)
     def __str__(self):
         return self.companyname
 @receiver(post_save, sender=CompanyName)

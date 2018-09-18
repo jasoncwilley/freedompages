@@ -71,25 +71,50 @@ def companyinfo(request):
     return render(request, 'companyinfo.html')
 
 
-def resturants(request):
-    return render(request, 'resturants.html')
+def foodandbev(request):
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='FOOD & DRINKS')
+    context = {
+        'company': company,
+    }
+    return render(request, 'foodandbev.html', context)
 
 def products(request):
-    return render(request, 'products.html')
-
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='PRODUCTS')
+    context = {
+        'company': company,
+    }
+    return render(request, 'products.html', context)
 
 def nightlife(request):
-    return render(request, 'nightlife.html')
-
-
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='NIGHTLIFE')
+    context = {
+        'company': company,
+    }
+    return render(request, 'nightlife.html', context)
 
 def religious(request):
-    return render(request, 'religious.html')
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='RELIGIOUS SERVICES')
+    context = {
+        'company': company,
+    }
+    return render(request, 'religious.html', context)
 
 def entertainment(request):
-    return render(request, 'entertainment.html')
-
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='ENTERTAINMENT')
+    context = {
+        'company': company,
+    }
+    return render(request, 'entertainment.html', context)
 
 def services(request):
-
-    return render(request, 'services.html')
+    companies = CompanyName.objects.all()
+    company = companies.filter(company_type='SERVICES')
+    context = {
+        'company': company,
+    }
+    return render(request, 'services.html', context)
