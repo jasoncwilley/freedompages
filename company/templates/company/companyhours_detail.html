@@ -27,9 +27,11 @@
   grid-template-areas: "nav nav" "businessname businessname" "image image" "businesshours businesshours" "icons icons";
 }
 .nav{ grid-area: nav;
-  width: 100%;
+  width: 375px;
   height:75px;
-}
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
+
+
 .searchbutton {
   width: 70px;
   margin-left: 30px;
@@ -43,31 +45,38 @@
     margin-top: 20px;
   }
 .businessname{ grid-area: businessname;
-width: 340px;
-height: 50px;
+background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+width: 375px;
 text-align: center;
-background-color: ;
-margin-left: 15px;
+
 align-content: center;
-font-size: 25px;
-padding-top: 5px;
+font-size: 30px;
+padding-top: 15px;
 border-width: 2px;
 border-color: lightgray;
-border-style: solid;}
+border-style: solid;
+color: white;
+}
 
 .image{ grid-area: image;
   width: 375px;
   height: 200px;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+
 }
 
 
 .businesshours { grid-area: businesshours;
 height: 200px;
 width: 375px;
-background-color: green;}
+padding-left: 10px;
+font-size: 16px;
+color: black;
+background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
+
 
 .icons { grid-area: icons;
-  background-color: gray;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
   width: 375px;
   height: 110px;
   padding-top: 10px;
@@ -102,8 +111,6 @@ background-color: green;}
   text-align: center;
   margin-top:10px;
     padding-top: 15px
-
-
 }
 
 </style>
@@ -125,17 +132,17 @@ background-color: green;}
     <img src='https://picsum.photos/375/200image=0' alt='business picture'>
 </div>
     <div class="businesshours">
-
-
-
-
-
-     </div>
+<p>Business Hours</p>
+<p>Weekdays:</br> {{object.monday_open}} to {{object.monday_close}}</br>
+  Saturday: </br>{{object.tuesday_open}} to {{object.tuesday_close}}</br>
+  Sunday:</br> {{object.wednesday_open}} to {{object.wednesday_close}}</br>
+</p>
+ </div>
 
 
 
 <div class="icons">
-  <a class="btn-primary contactbutton btn " href='{{object.facebook}}'>Conact<br/>Infor
+<a class="btn-primary contactbutton btn"  href= "{% url 'company:companycompanyinfo-detail'  %}">Conact<br/>Infor
   </a>
    <a class="btn-primary btn reviewbutton" href='{{object.twitter}}'>Customer<br/>Reviews
     </a>

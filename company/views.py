@@ -9,6 +9,19 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views import generic
 
+
+
+class CompanyHours(generic.DetailView):
+    model = CompanyHours
+def companyhours_detail(request, pk):
+    try:
+        company = CompanyHours.objects.get(pk=pk)
+    except CompanyHours.DoesNotExist:
+        raise Http404('Company Does Not Exist In Our Database')
+    return render(request, 'companyhours_detail.html', context= {'company': company})
+
+
+
 class CompanyContactInfo(generic.DetailView):
     model = CompanyContactInfo
     context = 'contactinfo'

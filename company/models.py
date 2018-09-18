@@ -112,7 +112,7 @@ class CompanyContactInfo(models.Model):
     pintrest = models.URLField(max_length=50, blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('company:companyinfo', kwargs={'pk': self.pk})
+        return reverse('company:companycompanyinfo-detail', kwargs={'pk': self.pk})
 
 
 
