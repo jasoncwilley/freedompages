@@ -13,131 +13,128 @@
 </head>
 
 <style>
+
+
 .grid-container {
   display: grid;
   height: 100%;
-  grid-template-columns: 375px;
-  grid-template-rows: 200px 75px 75px 75px 75px 50px;
-  grid-gap: 10px 1px;
-  grid-template-areas: "." "contact-info" "rating" "distance" "open-hours" "bback-";
-
+  grid-template-columns: 180px 180px;
+  grid-template-rows: 75px 75px 200px 200px 110px;
+  grid-gap: 0px;
+  grid-template-areas: "nav nav" "businessname businessname" "image image" "businesshours businesshours" "icons icons";
 }
-
-.contact-info { grid-area: contact-info;
-height: 200px;
-width:375px;
-border: solid;
-background-color: blue;
-border-width: 1px;
-border-color: black;
-}
-
-#rating { grid-area: rating;
-  width: 355px;
-  height: 80px;
-background-color: white;
-border-color: black;
-border: solid;
-border-width: 5px;}
-
-.rating-data {
-  text-align: center;
-  font-size: 18px;
-}
-.rating-average {
-  padding-left: 35px;
-  font-size: 20px;
-}
-.distance { grid-area: distance;
-background-color: green;
-width: 375px;
-height: 75px;}
-
-.back- { grid-area: back-;
-back-ground: yellow}
-
-.open-hours { grid-area: open-hours;
-background-color: green }
-.extraClasses {
-  font-size: 12px;
-}
-.extraClass {
-  font-size: 75px;
-  height: 110px;
-  width: 115px;
-  padding-top:15px;
-
-}
-.icon-bar {
-margin-top: 5px;
-}
-#navbarContent {
-height: 170px;
-width: 350px;
-padding-left: 10px;
-
-
-}
-
-.main-container {
-  background-color: ;
-  padding-top: 5px;
-}
-.icon-detail {
+.nav{ grid-area: nav;
   width: 100%;
-  font-size: 22px;
-  height: 25px;
-  background-color: white;
-  padding-left: 25px;
-  margin-bottom: 25px;
+  height:75px;
 }
+.searchbutton {
+  width: 70px;
+  margin-left: 30px;
+  height: 30px;
+  margin-top: 20px;
+}
+.backbutton {
+    width: 70px;
+    margin-left: 165px;
+    height: 30px;
+    margin-top: 20px;
+  }
+.businessname{ grid-area: businessname;
+width: 340px;
+height: 50px;
+text-align: center;
+background-color: ;
+margin-left: 15px;
+align-content: center;
+font-size: 25px;
+padding-top: 5px;
+border-width: 2px;
+border-color: lightgray;
+border-style: solid;}
+
+.image{ grid-area: image;
+  width: 375px;
+  height: 200px;
+}
+
+
+.businesshours { grid-area: businesshours;
+height: 200px;
+width: 375px;
+background-color: green;}
+
+.icons { grid-area: icons;
+  background-color: gray;
+  width: 375px;
+  height: 110px;
+
+  padding-top: 10px;
+  color: white;
+}
+.btn-facebook {
+  margin-top: 10px;
+  width: 70px;
+  height: 65px;
+  margin-right: 15px;
+  margin-left: 15px;
+  text-align: center;
+}
+.btn-twitter{
+  width: 70px;
+  height: 65px;
+  margin-top: 10px;
+  margin-right: 15px;
+  text-align: center;
+}
+.btn-instagram {
+  width: 70px;
+  height: 65px;
+  margin-top: 10px;
+  margin-right:15px;
+  text-align: center;
+}
+.btn-pinterest {
+  width: 70px;
+  height: 65px;
+  text-align: center;
+  margin-top:10px;
+  margin-right: 10px;
+
+}
+
 </style>
 <body>
-<div class="grid-container">
-<div class="image">
-
-
-  <div>
-
-  <div class="contact-info">
-    <img src='https://picsum.photos/375/200?image=0' alt='business picture'>
-
+  <div class="grid-container">
+  <div class="nav">
+    <div class='navbuttons'>
+    <a class='btn-primary btn searchbutton' href="{% url 'company:companyinfo'%}">Back
+    </a>
+    <a class='btn-primary btn backbutton' href="{% url 'company:index'%}">Search
+    </a>
   </div>
-  <div class="rating" id='rating'>
-    <div class='rating-data'>
-<p>Company Name Here</p>
-    </div>
-    <div class='rating-average'>
-<a>4 ot of 5 Stars</a>
-
-  </div>
-
-  <div id="divContainer" class="main-container">
-           <div id="navbarContent">
-      <button type="button"
-      <span class="icon-bar"><i class="fa fa-address-card extraClass"></i></span>
-    </button>
-      <button type="button"
-      <span class="icon-bar"><i type='action' href="{% url 'company:products' %}"class="fa fa-map-marker-alt extraClass"></i></span>
-      </button>
 </div>
 
-               <div id="divContainer" class="icon-detail">
-               <a href= "{% url 'company:contactinfo' %}">Contact Info</a> &nbsp &nbsp&nbsp &nbsp <a href="{% url 'company:map' %}">Directions</a>
-               </div>
-               <div id="divContainer" class="main-container">
-                        <div id="navbarContent">
-                   <button type="button"
-                   <span class="icon-bar"><i class="fa fa-comments extraClass"></i></span>
-                 </button>
-                   <button type="button"
-                   <span class="icon-bar"><i class="fa-hand-holding-usd extraClass"></i></span>
-                   </button>
- </div>
- <div id="divContainer" class="icon-detail">&nbsp
- <a href= "{% url 'company:reviews' %}">Reviews</a> &nbsp &nbsp &nbsp &nbsp &nbsp</a><a href="{% url 'company:promotions' %}">Promotions</a></div>
-      </div>
- </div>
+<div class='businessname'>
+<p>{{object.companyname}}</p>
+</div>
+  <div class="image">
+    <img src='https://picsum.photos/375/200image=0' alt='business picture'>
+</div>
+    <div class="businesshours">
+     </div>
+     <div class="icons">
+       <a class="btn btn-social-icon btn-facebook" href='{{object.facebook}}'>Facebook
+
+  </a>
+   <a class="btn btn-social-icon btn-twitter" href='{{object.twitter}}'>  Twitter
+    </a>
+    <a class="btn btn-social-icon btn-instagram" href='{{object.instagram}}'>Instagram
+     </a>
+     <a class="btn btn-social-icon btn-pinterest" href='{{object.pintrest}}'>Pinterest
+      </a>
+     </div>
+   </div>
+
 </body>
 <script>
      src="https://code.jquery.com/jquery-2.1.1.min.js"
