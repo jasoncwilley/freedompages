@@ -1,0 +1,133 @@
+
+<style>
+
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 170px 170px;
+  grid-template-rows: 75px 75px 150px 100px 150px 110px;
+  grid-gap: 0px;
+  grid-template-areas: "nav nav" "businessname businessname" "image image" "contactinfo contactinfo" "emailbtn phonebtn" "socialicons socialicons";
+}
+
+.nav{ grid-area: nav;
+  width: 100%;
+  height:75px;
+}
+
+.businessname{ grid-area: businessname;
+width: 100%;
+height: 50px;
+text-align: center;
+background-color: ;
+margin-left: 15px;
+align-content: center;
+font-size: 25px;
+padding-top: 5px;
+border-width: 2px;
+border-color: lightgray;
+border-style: solid;}
+
+.image{ grid-area: image;
+  width: 375px;
+}
+
+.contactinfo{ grid-area: contactinfo;
+  width: 375px;
+  height: 100px;
+  background-color: ;
+  font-size: 20px;
+  padding-left: 15px;
+  padding-top: 15px;
+  border-width: 2px;
+  border-color: lightgray;
+  border-style: solid;
+  margin-top: 25px;
+}
+
+.emailbtn { grid-area: emailbtn;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+.phonebtn { grid-area: phonebtn;
+  margin-top: 25px;
+  margin-left: 30px;
+  align-items: center;
+
+}
+
+.emailbutton {
+  width: 125px;
+  height: 125px;
+  margin-left: 10px;
+  margin-top: 20px;
+  border-width: 2px;
+  border-color: lightgray;
+  border-style: solid;
+  color: white;
+}
+.phonebutton {
+  width: 125px;
+  height: 125px;
+  margin-left: 10px;
+  margin-top: 20px;
+  border-width: 2px;
+  border-color: lightgray;
+  border-style: solid;
+  color: white;
+}
+.searchbutton {
+  width: 70px;
+  margin-left: 30px;
+  height: 30px;
+  margin-top: 20px;
+}
+.backbutton {
+    width: 70px;
+    margin-left: 165px;
+    height: 30px;
+    margin-top: 20px;
+  }
+
+
+.socialicons { grid-area: socialicons;
+  background-color: ;
+  width: 375px;
+  height: 100px;
+  margin-top:25px;
+  padding-top: 10px;
+  color: white;
+}
+.btn-facebook {
+  margin-top: 10px;
+  width: 70px;
+  height: 65px;
+  margin-right: 15px;
+  margin-left: 15px;
+  text-align: center;
+}
+.btn-twitter{
+  width: 70px;
+  height: 65px;
+  margin-top: 10px;
+  margin-right: 15px;
+  text-align: center;
+}
+.btn-instagram {
+  width: 70px;
+  height: 65px;
+  margin-top: 10px;
+  margin-right:15px;
+  text-align: center;
+}
+.btn-pinterest {
+  width: 70px;
+  height: 65px;
+  text-align: center;
+  margin-top:10px;
+  margin-right: 10px;
+
+}
+
+</style>

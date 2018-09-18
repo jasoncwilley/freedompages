@@ -73,6 +73,7 @@ text-align: center;
     margin-right: 145px;
     margin-left: 20px;
     margin-bottom: 15px;
+    margin-top: 10px;
     color: white;
   }
   .backbutton {
@@ -85,17 +86,17 @@ text-align: center;
 </style>
 
    <body>
-<div class='nav'>
-  <button class='button'>Back
-  </button>
-  <button class='backbutton'>Search
-  </button>
+<nav class='nav'>
+  <a class='btn-primary btn button' href="{% url 'company:index'%}">Back
+  </a>
+  <a class='btn-primary btn backbutton' href="{% url 'company:index'%}">Search
+  </a>
 </nav>
 {% for x in company %}
      <div class="grid-container">
 
        <div class="image">
-         <img src="https://picsum.photos/100/100/?random" alt="business image">
+         <img src="{{ x.company_image }}" alt="business image">
 
        </div>
 

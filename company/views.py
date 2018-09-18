@@ -3,9 +3,21 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 import datetime
 from company.forms import ReviewForm
-from company.models import CompanyName, Review
+from company.models import CompanyName, Review, CompanyContactInfo, CompanyHours
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.views.generic.detail import DetailView
+from django.views import generic
+
+class CompanyContactInfo(generic.DetailView):
+    model = CompanyContactInfo
+    context = 'contactinfo'
+def companycontactinfo_detail(request, pk):
+    try:
+        company = CompanyContactInfo.objects.get(pk=pk)
+    except CompanyContactInfo.DoesNotExist:
+        raise Http404('Company Does Not Exist In Our Database')
+    return render(request, 'companycontactinfo_detail.html', context= {'company': company})
 
 class ReviewCreate(CreateView):
     model = Review
