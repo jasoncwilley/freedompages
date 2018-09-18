@@ -28,7 +28,7 @@ SECRET_KEY = "7m&5e4sdyb!0l9c8i*0wo4hbn_2(oo$&8^s-#ex*w)h=26aq&9"
 DEBUG = True
 GOOGLE_API_KEY = 'AIzaSyAmdsoXBBFH8yerapaH9C-lfqfhdkvWWFU'
 # Application definition
-
+#STAR_RATINGS_RATING_MODEL = 'company.MyRating'
 INSTALLED_APPS = [
 
     'django.contrib.admin',
@@ -36,13 +36,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    
+
     # Disable Django's own staticfiles handling in favour of WhiteNoise, for
     # greater consistency between gunicorn and `./manage.py runserver`. See:
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'company',
+    'bootstrap3'
+
     ]
 
 MIDDLEWARE = [
@@ -69,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
             'debug': DEBUG,
         },

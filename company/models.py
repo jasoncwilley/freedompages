@@ -1,6 +1,7 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+import numpy as np
 
 ONE_STAR = 'one star'
 TWO_STARS = 'two stars'
@@ -41,11 +42,17 @@ class CompanyName(models.Model):
     description = models.TextField(max_length=500, null=True, blank=True)
     company_image = models.URLField(max_length=50, null=True, blank=True)
 
+    def average_rating(self):
+        all_ratings = map(lambda x: x.rating, self.review_set.count())
+        return np.mean(all_ratings)
+
+
     def __str__(self):
         return self.companyname
 
     def get_absolute_url(self):
         return reverse('company:companyname-detail', kwargs={'pk': self.pk})
+
 
 @receiver(post_save, sender=CompanyName)
 def create_address(sender, **kwargs):

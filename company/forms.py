@@ -1,6 +1,7 @@
 from django import forms
 from company.models import CompanyName
-
+from django.forms import ModelForm, Textarea
+from company.models import Review
 ONE_STAR = 'one star'
 TWO_STARS = 'two stars'
 THREE_STARS = 'three stars'
@@ -42,3 +43,13 @@ class ReviewForm(forms.ModelForm):
     def save(self):
         x = ReviewForm(request.POST)
         x.save()
+
+
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']
+        widgets = {
+            'comment': Textarea(attrs={'cols': 40, 'rows': 15}),
+}

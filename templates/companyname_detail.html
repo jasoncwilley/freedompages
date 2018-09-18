@@ -1,0 +1,35 @@
+{% load bootstrap3 %}
+<h2>{{ companyname.companyname }}</h2>
+
+
+
+<h3>Recent reviews</h3>
+
+{% if companyname.review_set.all %}
+<div class="row">
+    {% for review in review_set.all %}
+    <div class="col-xs-6 col-lg-4">
+        <em>{{ review.comment }}</em>
+        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
+        <h5><a href="{% url 'reviews:review_detail' review.id %}">
+        Read more
+        </a></h5>
+    </div>
+{% endfor %}
+</div>
+{% else %}
+<p>No reviews for this wine yet</p>
+{% endif %}
+
+<h3>Add your review</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'company:add_review' companyname.id %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form layout='inline' %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "star" %} Add
+    </button>
+    {% endbuttons %}
+</form>

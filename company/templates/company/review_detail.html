@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head runat="server">
+   <title>Mobile first sample page</title>
+   <meta name="viewport" content="width=device-width,
+      initial-scale=1" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="{% static 'company/bootstrap-social.css' %}"  rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{% static 'company/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+<style>
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 180px 180px;
+  grid-template-rows: 75px 100px 330px 120px;
+  grid-gap: 0px;
+  grid-template-areas: "nav nav" "average average" "reviews reviews" "icons icons";
+}
+
+.nav{ grid-area: nav;
+  width: 375px;
+  height:75px;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
+
+
+.searchbutton {
+  width: 70px;
+  margin-left: 30px;
+  height: 30px;
+  margin-top: 20px;
+}
+.backbutton {
+    width: 70px;
+    margin-left: 165px;
+    height: 30px;
+    margin-top: 20px;
+  }
+.average { grid-area: average;
+  width: 375px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-color: lightgray;
+}
+
+.reviews { grid-area: reviews;
+  width: 375px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+}
+
+.icons { grid-area: icons;
+width: 375px;
+border-color: lightgray;
+border-style: solid;
+border-width: 2px;
+background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+}
+.contactbutton {
+  margin-top: 10px;
+  width: 85px;
+  height: 85px;
+  margin-left: 10px;
+  padding-top: 20px;
+  text-align: center;
+}
+.searchpage {
+  width: 85px;
+  height: 85px;
+  margin-top: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+.promosbutton {
+  width: 85px;
+  height: 85px;
+  margin-top: 10px;
+  padding-top: 20px;
+
+  text-align: center;
+}
+.mapbutton {
+  width: 85px;
+  height: 85px;
+  text-align: center;
+  margin-top:10px;
+    padding-top: 20px
+}
+
+</style>
+
+   <body>
+     <div class="grid-container">
+       <div class="nav">
+         <div class='navbuttons'>
+         <a class='btn-primary btn searchbutton' href="{% url 'company:companyinfo'%}">Back
+         </a>
+         <a class='btn-primary btn backbutton' href="{% url 'company:index'%}">Search
+         </a>
+       </div>
+     </div>
+{% for x in companyname %}
+       <div class="average">
+{{object.companyname}}
+
+       </div>
+       {{% endfor %}}
+       <div class="reviews">
+       </div>
+       <div class="icons">
+
+       <a class="btn-primary contactbutton btn"  href= "#">Conact<br/>Infor
+         </a>
+          <a class="btn-primary btn searchpage" href='{{object.twitter}}'>Search<br/>for a<br/>Business
+           </a>
+           <a class="btn-primary btn promosbutton" href='{{object.instagram}}'>Promo<br/>Codes
+            </a>
+            <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
+             </a>
+            </div>
+     </div>
+
+
+  </body>
+   <script
+   			  src="https://code.jquery.com/jquery-2.1.1.min.js"
+   			  integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="
+   			  crossorigin="anonymous">
+  </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

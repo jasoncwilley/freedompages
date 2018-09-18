@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 {% load static %}
+{% load ratings %}
 <html lang="en">
 
 <head runat="server">
@@ -11,6 +12,8 @@
       <link href="{% static 'company/bootstrap-social.css' %}"  rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="{% static 'company/styles.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 </head>
 <body>
 <style>
@@ -19,7 +22,7 @@
   height: 100%;
   grid-template-columns: 180px 180px;
   grid-template-rows: 75px 100px 330px 120px;
-  grid-gap: 1px;
+  grid-gap: 0px;
   grid-template-areas: "nav nav" "average average" "reviews reviews" "icons icons";
 }
 
@@ -49,7 +52,13 @@
   background-color: lightgray;
 }
 
-.reviews { grid-area: reviews; }
+.reviews { grid-area: reviews;
+  width: 375px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+}
 
 .icons { grid-area: icons;
 width: 375px;
@@ -107,6 +116,12 @@ background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d41
 
        </div>
        <div class="reviews">
+         {% ratings object %}
+         {% for review in reviews %}
+         {{review.companyname}}
+         {{review.rating}}
+         {{review.comment}}
+         {% endfor %}
        </div>
        <div class="icons">
 

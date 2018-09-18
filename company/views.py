@@ -9,8 +9,44 @@ from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views import generic
 from django.views.generic import ListView
+from .forms import ReviewForm
+import datetime
 
+def review_detail(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'review_detail.html', {'review': review})
 
+def companyname_list(request):
+    companyname_list = CompanyName.objects.order_by('-companyname')
+    context = {'companyname_list':companyname_list}
+    return render(request, 'companyname_list.html', context)
+
+def companyname_detail(request, companyname_id):
+    companyname = get_object_or_404(CompanyName, pk=companyname_id)
+    form = ReviewForm()
+    return render(request, 'companyname_detail.html', {'companyname': companyname, 'form': form})
+
+def add_review(request, companyname_id):
+    companyname = get_object_or_404(CompanyName, pk=companyname_id)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        rating = form.cleaned_data['rating']
+        comment = form.cleaned_data['comment']
+        user_name = request.user.username
+        review = Review()
+        review.companyname = companyname
+        review.user_name = user_name
+        review.rating = rating
+        review.comment = comment
+        review.pub_date = datetime.datetime.now()
+        review.save()
+        return HttpResponseRedirect(reverse('company:companyname_detail', args=(companyname.id,))),
+    return render(request, 'companyname_detail.html', {'companyname': companyname, 'form': form})
+
+def review_list(request):
+    latest_review_list = Review.objects.order_by('-pub_date')[:9]
+    context = {'latest_review_list':latest_review_list}
+    return render(request, 'review_list.html', context)
 
 class CompanyHours(generic.DetailView):
     model = CompanyHours
@@ -40,6 +76,26 @@ class ReviewList(ListView):
         except Review.DoesNotExist:
             raise Http404('Review Does Not Exist In Our Database')
         return render(request, 'review_list.html', context= {'review': review})
+
+class CompanyReviews(ListView):
+    template_name = 'companyreivews.html'
+    model = Review
+    def get_queryset(self, request):
+        try:
+            self.id = get_object_or_404(CompanyName, id=self.kwargs['id'])
+            reviews = Review.objects.filter(companyname_id=self.companyname_id)
+        except Review.DoesNotExist:
+            raise Http404('Review Does Not Exist In Our Database')
+        return render(request, self.template_name, context={'reviews': reviews,})
+
+class CompanyReview(generic.ListView):
+    template_name = 'companyreviews.html'
+    companyname_id = None
+    def get_queryset(request):
+        x = Review.objects.all().filter(company_type='FOOD and DRINK')
+        context = {'x': x}
+        return render(request, 'companyreviews.html', context)
+
 class ReviewCreate(CreateView):
     model = Review
     fields = '__all__'
