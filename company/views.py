@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views import generic
+from django.views.generic import ListView
 
 
 
@@ -21,10 +22,9 @@ def companyhours_detail(request, pk):
     return render(request, 'companyhours_detail.html', context= {'company': company})
 
 
-
 class CompanyContactInfo(generic.DetailView):
     model = CompanyContactInfo
-    context = 'contactinfo'
+
 def companycontactinfo_detail(request, pk):
     try:
         company = CompanyContactInfo.objects.get(pk=pk)
@@ -32,6 +32,14 @@ def companycontactinfo_detail(request, pk):
         raise Http404('Company Does Not Exist In Our Database')
     return render(request, 'companycontactinfo_detail.html', context= {'company': company})
 
+class ReviewList(ListView):
+    model = Review
+    def review_list(request, companyname):
+        try:
+            reviews = Review.objects.all().filter(companyname=companyname)
+        except Review.DoesNotExist:
+            raise Http404('Review Does Not Exist In Our Database')
+        return render(request, 'review_list.html', context= {'review': review})
 class ReviewCreate(CreateView):
     model = Review
     fields = '__all__'
@@ -86,8 +94,7 @@ def contactinfo(request):
 def directions(request):
     return render(request, 'directions.html')
 
-def reviews(request):
-    return render(request, 'reviews.html')
+
 
 def promotions(request):
     return render(request, 'promotions.html')

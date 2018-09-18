@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from company.views import nightlife, companyinfo, CompanyContactInfo, CompanyHours
+from company.views import nightlife, companyinfo, CompanyContactInfo, CompanyHours, ReviewList
 app_name='company'
 urlpatterns = [
 
@@ -14,10 +14,11 @@ urlpatterns = [
     path('companyinfo/', views.companyinfo, name='companyinfo'),
     path('contactinfo/', views.contactinfo, name='contactinfo'),
     path('directions/', views.directions, name='directions'),
-    path('reviews/', views.reviews, name='reviews'),
+#    path('reviews/', views.reviews, name='reviews'),
     path('promotions/', views.promotions, name='promotions'),
     path('map/', views.map, name='map'),
     path('d/', views.ReviewCreate.as_view(), name='review'),
-    path('companycontactinfo_detail/<int:pk>', CompanyContactInfo.as_view(), name= 'companycontactinfo_detail'),
-    path('companyhours_detail/<int:pk>', CompanyHours.as_view(), name= 'companyhours_detail')
+    path('companycontactinfo_detail/<int:pk>', CompanyContactInfo.as_view(), name= 'companycontactinfo'),
+    path('companyhours_detail/<int:pk>', CompanyHours.as_view(), name= 'companyhours_detail'),
+    path('reviews', ReviewList.as_view()),
 ]

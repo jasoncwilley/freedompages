@@ -79,7 +79,7 @@ class CompanyHours(models.Model):
     sunday_close = models.TimeField(blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('company:companyhours-detail', kwargs={'pk': self.pk})
+        return reverse('company:companyhours_detail', kwargs={'pk': self.pk})
 
 
 
@@ -112,7 +112,7 @@ class CompanyContactInfo(models.Model):
     pintrest = models.URLField(max_length=50, blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('company:companycompanyinfo-detail', kwargs={'pk': self.pk})
+        return reverse('company:companycontactinfo_detail', kwargs={'pk': self.pk})
 
 
 
