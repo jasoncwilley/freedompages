@@ -59,13 +59,13 @@ def create_address(sender, **kwargs):
     if kwargs.get('created', False):
         CompanyAddress.objects.get_or_create(companyname=kwargs.get('instance'))
         CompanyContactInfo.objects.get_or_create(companyname=kwargs.get('instance'))
-        ComanyHours.objects.get_or_create(companyname=kwargs.get('instance'))
+        CompanyHours.objects.get_or_create(companyname=kwargs.get('instance'))
 
 
 
 
 class CompanyHours(models.Model):
-    companyname = models.OneToOneField(CompanyName, related_name='hours', on_delete=models.CASCADE)
+    companyname = models.OneToOneField(CompanyName, related_name='name', on_delete=models.CASCADE)
     monday_open = models.TimeField(blank=True, null=True)
     tuesday_open = models.TimeField(blank=True, null=True)
     wednesday_open = models.TimeField(blank=True, null=True)
@@ -86,7 +86,7 @@ class CompanyHours(models.Model):
     sunday_close = models.TimeField(blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('company:companyhours_detail', kwargs={'pk': self.pk})
+        return reverse('company:detail', kwargs={'pk': self.pk})
 
 
 
