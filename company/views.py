@@ -11,15 +11,18 @@ from django.views import generic
 from django.views.generic import ListView
 from .forms import ReviewForm
 import datetime
+from django.db.models import Avg
+
+
 
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     return render(request, 'review_detail.html', {'review': review})
 
-def companyname_list(request):
-    companyname_list = CompanyName.objects.order_by('-companyname')
-    context = {'companyname_list':companyname_list}
-    return render(request, 'companyname_list.html', context)
+def search(request):
+    companies= CompanyName.objects.all()
+    context = {'companies':companies}
+    return render(request, 'search.html', context)
 
 def companyname_detail(request, companyname_id):
     companyname = get_object_or_404(CompanyName, pk=companyname_id)
@@ -70,18 +73,23 @@ def companycontactinfo_detail(request, pk):
 
 
 def reviews(request, companyname_id):
+    average = Review.objects.all().filter(companyname_id=companyname_id).values('rating').aggregate(Avg('rating'))
+    reviews = Review.objects.all().filter(companyname_id=companyname_id)
+
     try:
-        reviews = Review.objects.all().filter(companyname_id=companyname_id)
+        for review in reviews:
+            for name,avg in average.items():
+                if int(avg) > 0:
+                    avgrating=('%s' %(avg))
+                    print(avgrating)
+
+
     except Review.DoesNotExist:
         raise Http404('Review Does Not Exist In Our Database')
-    return render(request, 'reviews.html', context={ 'reviews': reviews})
+    return render(request, 'reviews.html', context={ 'reviews': reviews, 'avg':avg})
 
 
-class ReviewCreate(CreateView):
-    model = Review
-    fields = '__all__'
-    def get_success_url(self):
-        return HttpResponseRedirect('/index/')
+
 
 def add_review(request):
     form = ReviewForm(request.method=="POST") or ReviewForm()

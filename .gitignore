@@ -5,4 +5,3 @@ staticfiles
 *.sqlite3
 phonebook/settings.py
 company/templates/map.html
-

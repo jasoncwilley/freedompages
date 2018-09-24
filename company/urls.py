@@ -22,6 +22,5 @@ urlpatterns = [
     path('company/<int:companyname_id>', views.companyname_detail, name='companyname_detail'),
     path('companyname/<int:companyname_id>/add_review/', views.add_review, name='add_review'),
     path('review/(<int:review_id>', views.review_detail, name='review_detail'),
-    path('companyname', views.companyname_list, name='companyname_list'),
-
+    path('search/', views.search, name='search')
 ]

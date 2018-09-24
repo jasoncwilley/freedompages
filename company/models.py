@@ -42,10 +42,6 @@ class CompanyName(models.Model):
     description = models.TextField(max_length=500, null=True, blank=True)
     company_image = models.URLField(max_length=50, null=True, blank=True)
 
-    def average_rating(self):
-        all_ratings = map(lambda x: x.rating, self.review_set.count())
-        return np.mean(all_ratings)
-
 
     def __str__(self):
         return self.companyname
@@ -158,7 +154,17 @@ class Review(models.Model):
     comment = models.TextField(blank=True, max_length=500)
     rating = models.IntegerField(choices=RATING_CHOICES)
     pub_date =  models.DateTimeField(auto_now=True)
-    def __str___(self):
-        return self.companyname
+
     def get_absolute_url(self):
         return reverse('company:review_detail.html', kwargs={'pk':self.pk})
+
+    @classmethod
+    def avg(some):
+        tot=0
+        for q in some:
+            tot=tot+q
+        zavg=tot/len(some)
+        return zavg
+
+    def __str___(self):
+        return self.companyname

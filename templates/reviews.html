@@ -14,14 +14,19 @@
 </head>
 <body>
 <style>
+body {
+
+}
 .grid-container {
   display: grid;
-  width: 360px;
-  height: 100%;
+  width: 375px;
+
   grid-template-columns: 80px 280px;
 
-  grid-gap: 1px 1px;
+  grid-gap: 0px;
   grid-template-areas: "image company" ;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+
 }
 
 .rating{ grid-area: image;
@@ -37,7 +42,7 @@ color: white;
 }
 
 
-.company { grid-area: company;
+.company {
   color: white;
   padding-right: 10px;
 padding-left: 5px;
@@ -53,7 +58,7 @@ height: 102px;
 text-align: center;
  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
 
-.review { grid-area: company;
+.review {
   font-size: 10px;
   text-align: left;
   padding-left: 2px;
@@ -75,7 +80,7 @@ text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
   }
-    .socialicons { grid-area: socialicons;
+    .socialicons {
       background-color: ;
       width: 375px;
       height: 100px;
@@ -118,12 +123,38 @@ text-align: center;
   height: 150px;
   width: 375px;
   background-color: green;
-  margin-bottom: 10px;
+
 }
 .writeup {
   margin-top: 15px;
   color: white;
   text-align: center;
+}
+.avgsection {
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  width: 375px;
+
+}
+.average{
+  border-width: 4px;
+  border-color: black;
+  border-style: solid;
+  height: 65px;
+  width: 250px;
+  margin-left: 55px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+
+}
+.ratingavg {
+  font-size: 25px;
+  padding-top: 15px;
+  padding-left: 10px;
+  color: white;
 }
 </style>
 
@@ -140,9 +171,18 @@ text-align: center;
 <div class='companypic'>
   <img src="https://picsum.photos/375/150/?random" alt="business image">
 
+
+</div>
+<div class='avgsection'>
+<div class='average'>
+  <div class='ratingavg'>
+<p>Average Rating: <strong>{{ avg }}</strong></p>
+</div>
+</div>
 </div>
 {% for x in reviews %}
      <div class="grid-container">
+
 
        <div class="rating">
 <h4>Rating</h4>
@@ -160,7 +200,7 @@ text-align: center;
 {% endfor %}
 
 <div class="socialicons">
-  <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
+  <a class="btn-primary mapbutton btn" href='/company/search/'>Get<br/>Directions
    </a>
 
   <a class="btn btn-social-icon btn-facebook" href='{{object.facebook}}'>Facebook
@@ -168,7 +208,7 @@ text-align: center;
 </a>
 <a class="btn btn-social-icon btn-twitter" href='{{object.twitter}}'>  Twitter
 </a>
-<a class="btn-primary btn reviewbutton" href='{{object.twitter}}'>Customer<br/>Reviews
+<a class="btn-primary btn reviewbutton" href='/company/addreview/'>Submit<br/>Re
  </a>
 </div>
 </div>
