@@ -12,7 +12,7 @@ from django.views.generic import ListView
 from .forms import ReviewForm
 import datetime
 from django.db.models import Avg
-import django_filters
+import django_filter
 from .filters import CompanyNameFilter
 
 
