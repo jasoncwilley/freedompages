@@ -122,29 +122,31 @@ border-style: solid;}
   width: 70px;
   height: 65px;
   margin-right: 15px;
-  margin-left: 15px;
+  margin-left: 8px;
   text-align: center;
 }
 .btn-twitter{
   width: 70px;
   height: 65px;
   margin-top: 10px;
-  margin-right: 15px;
+  margin-right: 8px;
   text-align: center;
 }
-.btn-instagram {
-  width: 70px;
+.mapbutton {
+  width: 85px;
   height: 65px;
   margin-top: 10px;
-  margin-right:15px;
+  margin-right: 8px;
   text-align: center;
+  margin-left: 5px;
 }
 .reviewbutton {
   width: 85px;
-  height: 75px;
-  margin-top: 10px;
-  padding-top: 15px;
+  height: 65px;
   text-align: center;
+  margin-top:10px;
+  margin-left: px;
+
 }
 
 </style>
@@ -155,9 +157,9 @@ border-style: solid;}
 
     <div class="nav">
       <div class='navbuttons'>
-      <a class='btn-primary btn searchbutton' href="{% url 'company:companyinfo'%}">Back
+      <a class='btn-primary btn searchbutton' href="#">Back
       </a>
-      <a class='btn-primary btn backbutton' href="{% url 'company:index'%}">Search
+      <a class='btn-primary btn backbutton' href="#">Search
       </a>
     </div>
   </div>
@@ -196,15 +198,15 @@ border-style: solid;}
 
 
     <div class="socialicons">
+      <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
+       </a>
 
       <a class="btn btn-social-icon btn-facebook" href='{{object.facebook}}'>Facebook
 
  </a>
   <a class="btn btn-social-icon btn-twitter" href='{{object.twitter}}'>  Twitter
    </a>
-   <a class="btn btn-social-icon btn-instagram" href='{{object.instagram}}'>Instagram
-    </a>
-    <a class="btn-primary btn reviewbutton" href='{{object.twitter}}'>Customer<br/>Reviews
+    <a class="btn-primary btn reviewbutton" href="/company/reviews/{{object.companyname_id}}">Customer<br/>Reviews
      </a>
     </div>
   </div>

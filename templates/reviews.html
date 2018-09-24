@@ -23,25 +23,17 @@
   grid-gap: 2px 1px;
   grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
 }
-.image { grid-area: image;
+.rating{ grid-area: image;
   border-width: 2px;
   border-color: black;
   border-style: solid;
-  height: 100px;
-width: 100px;
+  height: 102px;
+width: 102px;
+text-align: center;
+font-size: 30px;
+background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+color: white;
 }
-
-
-.image1 { grid-area: image1;
-padding-bottom: 15px;}
-
-.image2 { grid-area: image2; }
-
-.image3 { grid-area: image3; }
-
-.image4 { grid-area: image4; }
-
-
 
 
 .company { grid-area: company;
@@ -60,54 +52,127 @@ height: 102px;
 text-align: center;
  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
 
-.companydescription { grid-area: company;
+.review { grid-area: company;
   font-size: 10px;
   text-align: left;
-  padding-left: 5px;
+  padding-left: 2px;
 }
 
 
-  .button {
-    width: 85px;
-    height: 40px;
-    margin-right: 145px;
-    margin-left: 20px;
-    margin-bottom: 15px;
-    color: white;
+.searchbutton {
+  width: 70px;
+  margin-left: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+}
+.backbutton {
+    width: 70px;
+    margin-left: 165px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
-  .backbutton {
-    color: white;
-      width: 85px;
-      margin-top: 10px;
-      height: 40px;
-     margin-bottom: 15px;
+    .socialicons { grid-area: socialicons;
+      background-color: ;
+      width: 375px;
+      height: 100px;
+      margin-top:25px;
+      padding-top: 10px;
+      color: white;
     }
+    .btn-facebook {
+      margin-top: 10px;
+      width: 70px;
+      height: 65px;
+      margin-right: 15px;
+      margin-left: 6px;
+      text-align: center;
+    }
+    .btn-twitter{
+      width: 70px;
+      height: 65px;
+      margin-top: 10px;
+      margin-right: 6px;
+      text-align: center;
+    }
+    .mapbutton {
+      width: 85px;
+      height: 65px;
+      margin-top: 10px;
+      margin-right: 6px;
+      text-align: center;
+      margin-left: 5px;
+    }
+    .reviewbutton {
+      width: 85px;
+      height: 65px;
+      text-align: center;
+      margin-top:10px;
+      margin-left: 6px;
+
+    }
+.companypic{
+  height: 150px;
+  width: 375px;
+  background-color: green;
+  margin-bottom: 10px;
+}
+.writeup {
+  margin-top: 15px;
+  color: white;
+  text-align: center;
+}
 </style>
 
    <body>
-<div class='nav'>
-  <button class='button'>Back
-  </button>
-  <button class='backbutton'>Search
-  </button>
-</nav>
-{% for x in company %}
+     <div class="nav">
+       <div class='navbuttons'>
+       <a class='btn-primary btn searchbutton' href="#">Back
+       </a>
+       <a class='btn-primary btn backbutton' href="#">Search
+       </a>
+     </div>
+   </div>
+
+<div class='companypic'>
+  <img src="https://picsum.photos/375/150/?random" alt="business image">
+
+</div>
+{% for x in reviews %}
      <div class="grid-container">
 
-       <div class="image">
-         <img src="https://picsum.photos/100/100/?random" alt="business image">
-
+       <div class="rating">
+<h4>Rating</h4>
+<p>{{ x.rating }}/5<p>
        </div>
 
 
        <div class="company">
-         <h4>{{ x.companyname }}</h4>
-
-         <div class='companydescription'>
-         <p>{{ x.description }}</p>
-</div>
+         <div class='writeup'>
+            <p>{{ x.first_name }} {{ x.last_name }} wrote </p></p>"{{ x.comment }}"</p>
+          </div>
+         <div class='review'>
+        </div>
        </div>
 {% endfor %}
+
+<div class="socialicons">
+  <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
+   </a>
+
+  <a class="btn btn-social-icon btn-facebook" href='{{object.facebook}}'>Facebook
+
+</a>
+<a class="btn btn-social-icon btn-twitter" href='{{object.twitter}}'>  Twitter
+</a>
+<a class="btn-primary btn reviewbutton" href='{{object.twitter}}'>Customer<br/>Reviews
+ </a>
+</div>
+</div>
+
+
 
   </body>
    <script

@@ -158,3 +158,7 @@ class Review(models.Model):
     comment = models.TextField(blank=True, max_length=500)
     rating = models.IntegerField(choices=RATING_CHOICES)
     pub_date =  models.DateTimeField(auto_now=True)
+    def __str___(self):
+        return self.companyname
+    def get_absolute_url(self):
+        return reverse('company:review_detail.html', kwargs={'pk':self.pk})

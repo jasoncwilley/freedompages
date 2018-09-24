@@ -43,10 +43,7 @@ def add_review(request, companyname_id):
         return HttpResponseRedirect(reverse('company:companyname_detail', args=(companyname.id,))),
     return render(request, 'companyname_detail.html', {'companyname': companyname, 'form': form})
 
-def review_list(request):
-    latest_review_list = Review.objects.order_by('-pub_date')[:9]
-    context = {'latest_review_list':latest_review_list}
-    return render(request, 'review_list.html', context)
+
 
 class CompanyHours(generic.DetailView):
     model = CompanyHours
@@ -58,7 +55,7 @@ def companyhours_detail(request, pk):
     return render(request, 'companyhours_detail.html', context= {'company': company})
 class DetailView(generic.DetailView):
     model = CompanyContactInfo
-    template_name= 'company/detail.html'
+    template_name= 'detail.html'
 
 class CompanyContactInfo(generic.DetailView):
     model = CompanyContactInfo
@@ -70,33 +67,15 @@ def companycontactinfo_detail(request, pk):
         raise Http404('Company Does Not Exist In Our Database')
     return render(request, 'companycontactinfo_detail.html', context= {'company': company})
 
-class ReviewList(ListView):
-    model = Review
-    def review_list(request, companyname):
-        try:
-            reviews = Review.objects.all().filter(companyname=companyname)
-        except Review.DoesNotExist:
-            raise Http404('Review Does Not Exist In Our Database')
-        return render(request, 'review_list.html', context= {'review': review})
 
-class CompanyReviews(ListView):
-    template_name = 'companyreivews.html'
-    model = Review
-    def get_queryset(self, request):
-        try:
-            self.id = get_object_or_404(CompanyName, id=self.kwargs['id'])
-            reviews = Review.objects.filter(companyname_id=self.companyname_id)
-        except Review.DoesNotExist:
-            raise Http404('Review Does Not Exist In Our Database')
-        return render(request, self.template_name, context={'reviews': reviews,})
 
-class CompanyReview(generic.ListView):
-    template_name = 'companyreviews.html'
-    companyname_id = None
-    def get_queryset(request):
-        x = Review.objects.all().filter(company_type='FOOD and DRINK')
-        context = {'x': x}
-        return render(request, 'companyreviews.html', context)
+def reviews(request, companyname_id):
+    try:
+        reviews = Review.objects.all().filter(companyname_id=companyname_id)
+    except Review.DoesNotExist:
+        raise Http404('Review Does Not Exist In Our Database')
+    return render(request, 'reviews.html', context={ 'reviews': reviews})
+
 
 class ReviewCreate(CreateView):
     model = Review
@@ -146,8 +125,6 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-def contactinfo(request):
-    return render(request, 'contactinfo.html')
 
 def directions(request):
     return render(request, 'directions.html')
