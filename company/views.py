@@ -82,22 +82,22 @@ class ReviewCreate(CreateView):
     fields = '__all__'
     def get_success_url(self):
         return HttpResponseRedirect('/index/')
-'''
-def submit_review(request):
-    review_form = ReviewForm
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            Review.save()
-            return HttpResponseRedirect(reverse('not a registered company'))
-    else:
-        review_form = ReviewForm()
-    context = {
-    'review_form': review_form,
-    }
 
-    return render(request, 'review.html', context)
-'''
+def add_review(request):
+    form = ReviewForm(request.method=="POST") or ReviewForm()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = ReviewForm()
+        context = {
+        'form': form,
+        }
+        return render(request, 'addreview.html', context)
+
 
 
 def index(request):

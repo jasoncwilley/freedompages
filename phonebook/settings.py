@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'company',
-    'bootstrap3'
+    'bootstrap3',
+    'widget_tweaks',
+    'bootstrapform'
 
     ]
 

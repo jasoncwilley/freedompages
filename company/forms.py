@@ -37,15 +37,13 @@ class ReviewForm(forms.ModelForm):
     )
     companyname = forms.ModelChoiceField(queryset=CompanyName.objects.all(), to_field_name='companyname',empty_label="(Company Name)")
     class Meta:
-        model = CompanyName
-        fields = ('companyname', 'first_name', 'last_name', 'comment', 'rating')
-
-    def save(self):
-        x = ReviewForm(request.POST)
-        x.save()
+        model = Review
+        fields = ('companyname', 'company_type', 'first_name', 'last_name','rating', 'comment' )
 
 
 
+
+'''
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
@@ -53,3 +51,4 @@ class ReviewForm(ModelForm):
         widgets = {
             'comment': Textarea(attrs={'cols': 40, 'rows': 15}),
 }
+'''
