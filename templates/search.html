@@ -128,8 +128,8 @@ height: 40px;
                        <tr>
                            <td class="companypic"><a href='/company/{{x.id}}/'>
                            <img src="{{ x.company_image }}" alt="business image"></td>
-                           <td class="companyname"><a href='/company/{{x.id}}/'>
-                           <h4>{{ x.companyname }}</h4><br>{{ x.description }}</td>
+                           <td class="companyname"><a class='companyname' href='/company/{{x.id}}/'>
+                           <h4 class='companyname'>{{ x.companyname }}</h4><br>{{ x.description }}</td>
                        </tr>
                        {% endfor %}
                    </tbody>
@@ -137,6 +137,13 @@ height: 40px;
 
 
   </body>
+  <script>
+  var options = {
+    valueNames: [ 'companyname' ]
+  };
+
+  var userList = new List('users', options);
+  </script>
   <script type='text/javascript' src="{% static 'js/report.js' %}"></script>
    <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 

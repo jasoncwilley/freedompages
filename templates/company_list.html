@@ -1,0 +1,12 @@
+
+
+
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for companyname in filter.qs %}
+    <li>{{ companyname.companyname }} - {{companyname.company_type}} - <a href='/company/{{companyname.pk}}'>more inof...</a></li>
+  {% endfor %}
+  </ul>

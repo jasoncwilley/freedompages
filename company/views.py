@@ -12,18 +12,26 @@ from django.views.generic import ListView
 from .forms import ReviewForm
 import datetime
 from django.db.models import Avg
+import django_filters
+from .filters import CompanyNameFilter
+
+
+def search(request):
+    company_list = CompanyName.objects.all()
+    company_filter = CompanyNameFilter(request.GET, queryset=company_list)
+    return render(request, 'company_list.html', {'filter': company_filter})
 
 
 
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     return render(request, 'review_detail.html', {'review': review})
-
+'''
 def search(request):
     companies= CompanyName.objects.all()
     context = {'companies':companies}
     return render(request, 'search.html', context)
-
+'''
 def companyname_detail(request, companyname_id):
     companyname = get_object_or_404(CompanyName, pk=companyname_id)
     form = ReviewForm()
