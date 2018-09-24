@@ -1,12 +1,174 @@
 
+<!DOCTYPE html>
+
+{% load widget_tweaks %}
+{% load static %}
+<html lang="en">
+
+<head runat="server">
+   <title>Mobile first sample page</title>
+   <meta name="viewport" content="width=device-width,
+      initial-scale=1" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="{% static 'company/bootstrap-social.css' %}"  rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="{% static 'company/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+<style>
+.grid-container {
+  display: grid;
+  width: 360px;
+  height: 100%;
+  grid-template-columns: 80px 280px;
+  grid-template-rows: 115px 115px 115px 115px 115px;
+  grid-gap: 2px 1px;
+  grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
+}
+.image { grid-area: image;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  height: 100px;
+width: 100px;
+
+}
 
 
+
+.company { grid-area: company;
+  color: white;
+  padding-right: 10px;
+padding-left: 5px;
+padding-bottom: 15px;
+width:275px;
+border-left: 0px;
+border-width: 2px;
+border-color: black;
+border-style: solid;
+height: 110px;
+margin-left: 20px;
+height: 102px;
+text-align: center;
+ background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
+
+.companydescription { grid-area: company;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+a {
+  color: white;
+}
+  .button {
+    width: 85px;
+    height: 40px;
+    margin-right: 145px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color: white;
+  }
+  .backbutton {
+    color: white;
+      width: 85px;
+      margin-top: 10px;
+      height: 40px;
+     margin-bottom: 15px;
+    }
+img {
+  width:100px;
+ height: 100px;
+ }
+ .formcontainer {
+   width:375px;
+   background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+   height: 175px;
+   margin-top: 10px;
+ }
+ .submit {
+   color:white;
+   font-size: 18px;
+   margin-left: 200px;
+   margin-top: 15px;
+background-color: purple;
+ }
+ .form-control {
+   width:200px;
+   font-size: 18px;
+   margin-left: 25px;
+   border-style: solid;
+   border-width: 2px;
+   border-color: black;
+   margin-top: 10px;
+ }
+ label {
+   font-size: 18px!important;
+   margin-left: 5px;
+   color: white;
+   margin-bottom: 10px;
+   margin-left:
+ }
+ input {
+   width: 200px;
+   background-color: white;
+   margin-left: 50px;
+
+  }
+#id_company_type {
+  background-color: white;
+  margin-top: 15px;
+
+}
+.container {
+width: 375px;
+background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+}
+.results {
+  margin-top: 35px;
+  text-align: left;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.nav {
+  background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);
+  width: 375px;
+}
+</style>
+
+   <body>
+<nav class='nav'>
+  <a class='btn-primary btn button' href="{% url 'company:index'%}">Back
+  </a>
+  <a class='btn-primary btn backbutton' href="{% url 'company:index'%}">Search
+  </a>
+</nav>
+
+<div class='formcontainer'>
+  <div class= 'container'>
   <form method="get">
-    {{ filter.form.as_p }}
-    <button type="submit">Search</button>
+  {{ filter.form.as_table }}
+    <button class='submit' type="submit">Search</button>
   </form>
-  <ul>
+</div>
+</div>
+
   {% for companyname in filter.qs %}
-    <li>{{ companyname.companyname }} - {{companyname.company_type}} - <a href='/company/{{companyname.pk}}'>more inof...</a></li>
-  {% endfor %}
-  </ul>
+     <div class="grid-container">
+
+       <div class="image">
+         <img src='{{companyname.company_image}}'>
+       </div>
+
+
+
+
+       <div class="company">
+         <div class='results'>
+         {{ companyname.companyname }} -  <a href='/company/{{companyname.pk}}'>more inof...</a>
+</div>
+       </div>
+{% endfor %}
+
+  </body>
