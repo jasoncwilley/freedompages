@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 import datetime
 from company.forms import ReviewForm
-from company.models import CompanyName, Review, CompanyContactInfo, CompanyHours
+from company.models import CompanyName, CompanyAddress, Review, CompanyContactInfo, CompanyHours
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
@@ -14,6 +14,36 @@ import datetime
 from django.db.models import Avg
 import django_filters
 from .filters import CompanyNameFilter
+from datetime import datetime, date
+
+
+
+def map(request, companyname_id):
+    company = get_object_or_404(CompanyAddress, companyname_id=companyname_id)
+    name = company.companyname
+    lontude = company.longitude
+    latude =company.latitude
+    return render(request, 'map.html', {'lontude': lontude, 'latude': latude, 'name': name, 'company': company})
+'''
+
+    print(d)
+    if 5 > d >=0:
+        d = "weekday"
+        print(d)
+    else:
+        t = "weekend"
+        print(t)
+
+    for x in openhours:
+        if d =="weekday":
+            x.weekdays_open = on_time
+            x.weekdays_close = off_time
+        else:
+            x.weekend_open = on_time
+            x.weekdays_close = off_time
+
+            return render(request, 'map.html')
+'''
 
 
 def search(request):
@@ -26,12 +56,9 @@ def search(request):
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     return render(request, 'review_detail.html', {'review': review})
-'''
-def search(request):
-    companies= CompanyName.objects.all()
-    context = {'companies':companies}
-    return render(request, 'search.html', context)
-'''
+
+
+
 def companyname_detail(request, companyname_id):
     companyname = get_object_or_404(CompanyName, pk=companyname_id)
     form = ReviewForm()
@@ -119,8 +146,7 @@ def add_review(request):
 def index(request):
     return render(request, 'index.html')
 
-def map(request):
-    return render(request, 'map.html')
+
 
 def userloc(request):
     ip = get_client_ip(request)

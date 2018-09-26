@@ -1,0 +1,67 @@
+
+<style>
+.grid-container {
+  display: grid;
+  width: 360px;
+  height: 100%;
+  grid-template-columns: 80px 280px;
+  grid-template-rows: 115px 115px 115px 115px 115px;
+  grid-gap: 2px 1px;
+  grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
+}
+.image { grid-area: image;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  height: 100px;
+width: 100px;
+}
+
+
+
+.company { grid-area: company;
+  color: white;
+  padding-right: 10px;
+padding-left: 5px;
+padding-bottom: 15px;
+width:275px;
+border-left: 0px;
+border-width: 2px;
+border-color: black;
+border-style: solid;
+height: 110px;
+margin-left: 20px;
+height: 102px;
+text-align: center;
+ background-image: linear-gradient(to right top, #eceee6, #a9b1ad, #6f7778, #3d4144, #111014);}
+
+.companydescription { grid-area: company;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+a {
+  color: white;
+}
+  .button {
+    width: 85px;
+    height: 40px;
+    margin-right: 145px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color: white;
+  }
+  .backbutton {
+    color: white;
+      width: 85px;
+      margin-top: 10px;
+      height: 40px;
+     margin-bottom: 15px;
+    }
+img {
+  width:100px;
+ height: 100px;
+ }
+</style>

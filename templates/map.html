@@ -15,18 +15,25 @@
 .grid-container {
   display: grid;
   height: 100%;
-  grid-template-columns: 350px;
-  grid-template-rows: 250px 200px;
-  grid-gap: 1px;
-  grid-template-areas: "map" "info";
+  grid-template-columns: 375px;
+  grid-template-rows: 400px 200px 200px;
+  grid-gap: 0px;
+  grid-template-areas: "map" "info" "input";
 }
 
+.input{ grid-area: input;
+  background-color: green;
+  width: 100%;
+  height: 250px;
 
-
+  font-size: 16px;
+  color: black;
+}
 .map { grid-area: map;}
 
 .info { grid-area: info;
-  margin-left: 10px;
+
+
   margin-right: 10px;}
 
 .button {
@@ -45,39 +52,119 @@
   }
   #map {
        height: 100%;
-       margin-left: 20px;
+       border: solid;
+       border-width: 2px;
+       border-color: black;
+
      }
-     /* Optional: Makes the sample page fill the window. */
-     html, body {
-       height: 100%;
-       margin: 0;
+     .icons { grid-area: icons;
+       background-color: lightgray;
+      width: 370px;
+       height: 110px;
+       padding-top: 10px;
+       color: white;
+       margin-right: 5px;
+       border: solid;
+       border-width: 2px;
+       border-color: black;
      }
+     .contactbutton {
+       margin-top: 10px;
+       width: 85px;
+       height: 75px;
+       margin-left: 7px;
+       padding-top: 15px;
+       text-align: center;
+     }
+     .reviewbutton {
+       width: 85px;
+       height: 75px;
+       margin-top: 10px;
+       padding-top: 15px;
+       text-align: center;
+     }
+     .promosbutton {
+       width: 85px;
+       height: 75px;
+       margin-top: 10px;
+       padding-top: 15px;
+
+       text-align: center;
+     }
+     .mapbutton {
+       width: 85px;
+       height: 75px;
+       text-align: center;
+       margin-top:10px;
+         padding-top: 15px
+
+
+     }
+
 .openorclosed {
-  width: 100%;
-  height: 60px;
+
+  height: 75px;
   padding-left: 10px;
-  margin-left: 10px;
+background-color: lightgray;
   text-align: left;
-  font-size: 16px;
-  padding-top: 10px;
+  font-size: 20px;
   border: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
-  margin-bottom: 5px;
+  width: 370px;
   color: black;
+  margin-top: 1px;
 }
 .directions {
-  background-color: lightgray;
-  width: 100%;
-  height: 250px;
-  margin-left: 10px;
-  font-size: 16px;
-  color: black;
+  background-color: green;
+  height: 100px;
+}
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  width: 375px;
+}
+
+#origin-input,
+#destination-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
+#origin-input:focus,
+#destination-input:focus {
+  border-color: #4d90fe;
+
+}
+
+#mode-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  margin-left: 12px;
+  padding: 5px 11px 0px 11px;
+}
+
+#mode-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
 }
 </style>
 <body>
   <nav class='buttons'>
-    <a  class='btn btn-primary button' type='submit' href="{% url 'company:companyinfo' %}">Back
+    <a  class='btn btn-primary button' type='submit' href="#">Back
     </a>
     <a class='btn-primary btn backbutton'>Search
     </a>
@@ -86,35 +173,147 @@
   <div class="nav">
   </div>
   <div class="map">
-    <div id="map"></div>
+    <div id="map">
+
+
+
+
+
+    </div>
   </div>
 <div class='info'>
 <div class='openorclosed'>
-  <a>Company Name is Open until ???? Today</a>
-  <a>Current Driving Time is XX Minutes</a>
+  <p><strong>{{name}}</strong><br>
+  Current Driving Time is XX Minutes</p>
 </div>
 <div class='directions'>
-<a>Insert Instructions Here</a>
+
+      <div class="icons">
+        <a class="btn-primary contactbutton btn " href='{{object.facebook}}'>Conact<br/>Infor
+        </a>
+         <a class="btn-primary btn reviewbutton" href='{{object.twitter}}'>Customer<br/>Reviews
+          </a>
+          <a class="btn-primary btn promosbutton" href='{{object.instagram}}'>Promo<br/>Codes
+           </a>
+           <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
+            </a>
+           </div>
+         </div>
+
+
+           <input id="origin-input" class="controls" type="text"
+               placeholder="Enter an origin location">
+
+  <div id="mode-selector" class="controls">
+    <input type="radio" name="type" id="changemode-walking" checked="checked">
+    <label for="changemode-walking">Walking</label>
+
+    <input type="radio" name="type" id="changemode-transit">
+    <label for="changemode-transit">Transit</label>
+
+    <input type="radio" name="type" id="changemode-driving">
+    <label for="changemode-driving">Driving</label>
+  </div>
+
 </div>
 </div>
 
       <!--The div element for the map -->
 
       <script>
-  // Initialize and add the map
-  function initMap() {
-    // The location of Uluru
-    var uluru = {lat: 38.047989, lng: -84.501640};
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: uluru});
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
-  }
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            mapTypeControl: false,
+            center: {lat: 38.0406, lng: -84.5037},
+            zoom: 10
+          });
+
+          new AutocompleteDirectionsHandler(map);
+        }
+
+         /**
+          * @constructor
+         */
+        function AutocompleteDirectionsHandler(map) {
+          this.map = map;
+          this.originPlaceId = null;
+
+          this.travelMode = 'WALKING';
+          var originInput = document.getElementById('origin-input');
+          var modeSelector = document.getElementById('mode-selector');
+          this.directionsService = new google.maps.DirectionsService;
+          this.directionsDisplay = new google.maps.DirectionsRenderer;
+          this.directionsDisplay.setMap(map);
+
+          var originAutocomplete = new google.maps.places.Autocomplete(
+              originInput, {placeIdOnly: true});
+
+          this.setupClickListener('changemode-walking', 'WALKING');
+          this.setupClickListener('changemode-transit', 'TRANSIT');
+          this.setupClickListener('changemode-driving', 'DRIVING');
+
+          this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+
+          this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+          this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+        }
+
+        // Sets a listener on a radio button to change the filter type on Places
+        // Autocomplete.
+        AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+          var radioButton = document.getElementById(id);
+          var me = this;
+          radioButton.addEventListener('click', function() {
+            me.travelMode = mode;
+            me.route();
+          });
+        };
+
+        AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+          var me = this;
+          autocomplete.bindTo('bounds', this.map);
+          autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.place_id) {
+              window.alert("Please select an option from the dropdown list.");
+              return;
+            }
+
+              me.originPlaceId = place.place_id;
+
+
+
+            me.route();
+          });
+
+        };
+
+        AutocompleteDirectionsHandler.prototype.route = function() {
+          if (!this.originPlaceId) {
+            return;
+          }
+          var me = this;
+
+          this.directionsService.route({
+            origin: {'placeId': this.originPlaceId},
+            destination: {lat: {{company.longitude}}, lng: {{company.latitude}}},
+            travelMode: this.travelMode
+          }, function(response, status) {
+            if (status === 'OK') {
+              me.directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        };
+
       </script>
-      <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmdsoXBBFH8yerapaH9C-lfqfhdkvWWFU&callback=initMap">
-      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8_3hhG7CsLFd8_jFAiLaikOlr5rpLVQ8&libraries=places&callback=initMap"
+          async defer></script>
  <script
         src="https://code.jquery.com/jquery-2.1.1.min.js"
         integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="

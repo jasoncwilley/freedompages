@@ -81,9 +81,20 @@ class CompanyHours(models.Model):
     saturday_close = models.TimeField(blank=True, null=True)
     sunday_close = models.TimeField(blank=True, null=True)
 
+
     def get_absolute_url(self):
         return reverse('company:detail', kwargs={'pk': self.pk})
-
+'''
+    def check_time(time_to_check, open, closed):
+        OPEN=1
+        CLOSED=2
+        if on_time > off_time:
+            if time_to_check > on_time or time_to_check < off_time:
+                return CLOSED, True
+        elif on_time < off_time:
+            if time_to_check > on_time and time_to_check < off_time:
+                return OPEN, True
+'''
 
 
 
@@ -97,7 +108,7 @@ class CompanyAddress(models.Model):
     latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('company:companyaddress', kwargs={'pk': self.pk})
+        return reverse('company:map', kwargs={'pk': self.pk})
 
 
 
