@@ -23,7 +23,8 @@ def map(request, companyname_id):
     name = company.companyname
     lontude = company.longitude
     latude =company.latitude
-    return render(request, 'map.html', {'lontude': lontude, 'latude': latude, 'name': name, 'company': company})
+    companyname_id = company.companyname_id
+    return render(request, 'map.html', {'companyname_id': companyname_id, 'lontude': lontude, 'latude': latude, 'name': name, 'company': company})
 '''
 
     print(d)
