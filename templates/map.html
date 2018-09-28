@@ -12,6 +12,10 @@
 </head>
 <body>
 <style>
+body {
+  background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+width: 375px;
+}
 .grid-container {
   display: grid;
   height: 100%;
@@ -32,8 +36,6 @@
 .map { grid-area: map;}
 
 .info { grid-area: info;
-
-
   margin-right: 10px;}
 
 .button {
@@ -43,29 +45,32 @@
   margin-left: 20px;
   margin-bottom: 10px;
   margin-top: 10px;
+   background-color: #051937;
+
 }
 .backbutton {
     width: 85px;
     margin-top: 10px;
     height: 40px;
    margin-bottom: 10px;
+  background-color: #051937;
   }
   #map {
        height: 100%;
        border: solid;
        border-width: 2px;
-       border-color: black;
+       border-color: white;
      }
      .icons { grid-area: icons;
-       background-color: lightgray;
-      width: 370px;
+
+      width: 375px;
        height: 110px;
        padding-top: 10px;
        color: white;
        margin-right: 5px;
        border: solid;
        border-width: 2px;
-       border-color: black;
+       border-color: white;
      }
      .contactbutton {
        margin-top: 10px;
@@ -74,6 +79,11 @@
        margin-left: 7px;
        padding-top: 15px;
        text-align: center;
+       background-color: #051937;
+       border-style: solid;
+       border-color: white;
+       border-width: 3px;
+
      }
      .reviewbutton {
        width: 85px;
@@ -81,41 +91,48 @@
        margin-top: 10px;
        padding-top: 15px;
        text-align: center;
+       background-color: #051937;
+       border-style: solid;
+       border-color: white;
+       border-width: 3px;
      }
      .promosbutton {
        width: 85px;
        height: 75px;
        margin-top: 10px;
        padding-top: 15px;
-
+       background-color: #051937;
+       border-style: solid;
+       border-color: white;
+       border-width: 3px;
        text-align: center;
      }
-     .mapbutton {
+     .searchforacompany {
        width: 85px;
        height: 75px;
        text-align: center;
        margin-top:10px;
-         padding-top: 15px
-
-
+         padding-top: 5px;
+         background-color: #051937;
+         border-style: solid;
+         border-color: white;
+         border-width: 3px;
      }
 
 .openorclosed {
 
   height: 75px;
   padding-left: 10px;
-background-color: lightgray;
   text-align: left;
   font-size: 20px;
   border: solid;
   border-width: 2px;
-  border-color: black;
-  width: 370px;
-  color: black;
+  border-color: white;
+  width: 375px;
+  color: white;
   margin-top: 1px;
 }
 .directions {
-  background-color: green;
   height: 100px;
 }
 .controls {
@@ -188,15 +205,15 @@ background-color: lightgray;
 <div class='directions'>
 
       <div class="icons">
-        <a class="btn-primary contactbutton btn " href='/company/{{companyname_id}}/'>Conact<br/>Infor
+        <a class="btn-primary contactbutton btn " href='/company/{{companyname_id}}/'>Conact<br/>Info
         </a>
         <a class="btn-primary btn reviewbutton" href="/company/reviews/{{companyname_id}}">Customer<br/>Reviews
 
           </a>
           <a class="btn-primary btn promosbutton" href='{{object.instagram}}'>Promo<br/>Codes
            </a>
-           <a class="btn-primary mapbutton btn" href='{{object.pintrest}}'>Get<br/>Directions
-            </a>
+           <a class="btn-primary searchforacompany btn" href='/company/search/'>Search<br/>for a<br/>Company
+           </a>
            </div>
          </div>
 

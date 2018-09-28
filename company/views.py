@@ -92,12 +92,19 @@ def companyhours_detail(request, pk):
     except CompanyHours.DoesNotExist:
         raise Http404('Company Does Not Exist In Our Database')
     return render(request, 'companyhours_detail.html', context= {'company': company})
+
+
+
 class DetailView(generic.DetailView):
     model = CompanyContactInfo
     template_name= 'detail.html'
 
+
+
 class CompanyContactInfo(generic.DetailView):
     model = CompanyContactInfo
+
+
 
 def companycontactinfo_detail(request, pk):
     try:

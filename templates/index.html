@@ -13,6 +13,12 @@
 </head>
 <body>
 <style>
+body {
+  width: 375px!important;
+  height: 700px;
+
+background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
 .extraClass {
   font-size: 90px;
   height: 110px;
@@ -23,13 +29,13 @@
 }
 .icon-bar {
 margin-top: 5px;
+
 }
 #navbarContent {
 height: 170px;
 width: 350px;
 padding-left: 10px;
 margin-top: 15px;
-
 grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
 }
 
@@ -37,6 +43,7 @@ grid-template-areas: "image company" "image1 company1" "image2 company2" "image3
 
   padding-top: 5px;
   grid-template-areas: "image company" "image1 company1" "image2 company2" "image3 company3" "image4 company4";
+
 
 }
 .icon-detail {
@@ -48,7 +55,7 @@ grid-template-areas: "image company" "image1 company1" "image2 company2" "image3
   padding-left: 10px;
 }
 button {
-  background-color: #845ec2;
+background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
   margin-left: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -56,10 +63,10 @@ button {
 </style>
    <div id="divContainer" class="main-container">
             <div id="navbarContent">
-              <button type="button">
-              <a href= "{% url 'company:foodandbev' %}"> <span class="icon-bar"><i class="fa fa-utensils extraClass"></i></span>
-              </a>
-            </button>
+
+              <a  href= "{% url 'company:foodandbev' %}">   <button type="button"> <span class="icon-bar"><i class="fa fa-utensils extraClass"></i></span>
+
+            </button>  </a>
                 <button type="button"
                      <span class="icon-bar"><i  class="fa fa-cocktail extraClass"></i></span>
                      <a href="{% url 'company:foodandbev' %}">
